@@ -1,0 +1,16 @@
+services:
+  docs:
+    image: sistem_proposal_reputasi_local_docs
+    container_name: sistem_proposal_reputasi_local_docs
+    build:
+      context: .
+      dockerfile: ./compose/local/docs/Dockerfile
+    env_file:
+      - ./.envs/.local/.django
+    volumes:
+      - ./docs:/docs:z
+      - ./config:/app/config:z
+      - ./sistem_proposal_reputasi:/app/sistem_proposal_reputasi:z
+    ports:
+      - '9000:9000'
+    command: /start-docs
